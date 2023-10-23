@@ -11,7 +11,7 @@ export default function Category({ category, posts }) {
   const { metadata } = usePageMetadata({
     metadata: {
       ...category,
-      description: description || category.og?.description || `Read ${posts.length} posts from ${name}`,
+      description: description || category.og?.description || `Total de ${posts.length} post em ${name}`,
     },
   });
 

@@ -111,7 +111,7 @@ export default function Post({ post, socialImage, related }) {
 
       <Section className={styles.postFooter}>
         <Container>
-          <p className={styles.postModified}>Last updated on {formatDate(modified)}.</p>
+          <p className={styles.postModified}>Última atualização em {formatDate(modified)}.</p>
           {Array.isArray(relatedPostsList) && relatedPostsList.length > 0 && (
             <div className={styles.relatedPosts}>
               {relatedPostsTitle.name ? (
