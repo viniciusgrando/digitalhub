@@ -11,7 +11,7 @@ import { QUERY_ALL_USERS, QUERY_ALL_USERS_SEO } from 'data/users';
  */
 
 export function authorPathBySlug(slug) {
-  return `/authors/${slug}`;
+  return `/blog/authors/${slug}`;
 }
 
 /**
@@ -33,7 +33,7 @@ export async function getUserBySlug(slug) {
  */
 
 export function authorPathByName(name) {
-  return `/authors/${parameterize(name)}`;
+  return `/blog/authors/${parameterize(name)}`;
 }
 
 /**
