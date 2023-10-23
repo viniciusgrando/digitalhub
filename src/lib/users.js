@@ -142,10 +142,13 @@ export async function getAllAuthors() {
  */
 
 export function mapUserData(user) {
+  const roles = user.roles ? user.roles.nodes : []; // Verifica se 'user.roles' existe
+  const avatar = user.avatar && updateUserAvatar(user.avatar);
+
   return {
     ...user,
-    roles: [...user.roles.nodes],
-    avatar: user.avatar && updateUserAvatar(user.avatar),
+    roles: roles,
+    avatar: avatar,
   };
 }
 
