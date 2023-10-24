@@ -1,6 +1,6 @@
 import NextApp from 'next/app';
 
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 
 import { SiteContext, useSiteContext } from 'hooks/use-site';
 import { SearchProvider } from 'hooks/use-search';
@@ -15,11 +15,24 @@ import 'styles/global.css';
 import 'styles/globals.scss';
 import 'styles/wordpress.scss';
 
-export const inter = Inter({
-  weight: ['400', '700', '800'],
-  style: ['normal'],
-  subsets: ['latin'],
-  display: 'swap',
+const neuzeit = localFont({
+  src: [
+    {
+      path: '../fonts/NeuzeitGro-Lig.woff2',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/NeuzeitGro-Reg.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/NeuzeitGro-Bol.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
 });
 
 function App({ Component, pageProps = {}, metadata, recentPosts, categories, menus }) {
@@ -31,7 +44,7 @@ function App({ Component, pageProps = {}, metadata, recentPosts, categories, men
   });
 
   return (
-    <div className={inter.className}>
+    <div className={neuzeit.className}>
       <SiteContext.Provider value={site}>
         <SearchProvider>
           <NextNProgress height={1} color={'var(--progress-bar-color)'} />

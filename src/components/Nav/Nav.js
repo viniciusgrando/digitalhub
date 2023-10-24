@@ -7,8 +7,6 @@ import useSearch, { SEARCH_STATE_LOADED } from 'hooks/use-search';
 import { postPathBySlug } from 'lib/posts';
 import { findMenuByLocation, MENU_LOCATION_NAVIGATION_DEFAULT } from 'lib/menus';
 
-import Section from 'components/Section';
-
 import styles from './Nav.module.scss';
 import NavListItem from 'components/NavListItem';
 
@@ -175,59 +173,60 @@ const Nav = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 backdrop-blur-lg h-16 z-50 dark:bg-default">
-      <nav className="container mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-16">
-        <Section className={styles.navSection}>
-          <p className={styles.navName}>
-            <Link href="/">{title}</Link>
-          </p>
-          <ul className={styles.navMenu}>
-            {navigation?.map((listItem) => {
-              return <NavListItem key={listItem.id} className={styles.navSubMenu} item={listItem} />;
-            })}
-          </ul>
-          <div className={styles.navSearch}>
-            {searchVisibility === SEARCH_HIDDEN && (
-              <button onClick={handleOnToggleSearch} disabled={!searchIsLoaded}>
-                <span className="sr-only">Toggle Search</span>
-                <FaSearch />
-              </button>
-            )}
-            {searchVisibility === SEARCH_VISIBLE && (
-              <form ref={formRef} action="/search" data-search-is-active={!!query}>
-                <input
-                  type="search"
-                  name="q"
-                  value={query || ''}
-                  onChange={handleOnSearch}
-                  autoComplete="off"
-                  placeholder="Buscar"
-                  required
-                />
-                <div className={styles.navSearchResults}>
-                  {results.length > 0 && (
-                    <ul>
-                      {results.map(({ slug, title }, index) => {
-                        return (
-                          <li key={slug}>
-                            <Link tabIndex={index} href={postPathBySlug(slug)}>
-                              {title}
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )}
-                  {results.length === 0 && (
-                    <p>
-                      Nenhum resultado com <strong>{query}</strong>
-                    </p>
-                  )}
-                </div>
-              </form>
-            )}
-          </div>
-        </Section>
+    <header className="flex fixed top-0 left-0 right-0 backdrop-blur-lg h-16 z-50 dark:bg-red">
+      <nav className="flex container items-center justify-between mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-16">
+        <Link
+          className="text-4xl font-bold bg-gradient-to-r from-stone-100 via-stone-300 to-stone-400 text-transparent bg-clip-text"
+          href="/"
+        >
+          {title}
+        </Link>
+        <ul>
+          {navigation?.map((listItem) => {
+            return <NavListItem key={listItem.id} className={styles.navSubMenu} item={listItem} />;
+          })}
+        </ul>
+        <div>
+          {searchVisibility === SEARCH_HIDDEN && (
+            <button onClick={handleOnToggleSearch} disabled={!searchIsLoaded}>
+              <span className="sr-only">Pesquisar</span>
+              <FaSearch />
+            </button>
+          )}
+          {searchVisibility === SEARCH_VISIBLE && (
+            <form ref={formRef} action="/search" data-search-is-active={!!query}>
+              <input
+                type="search"
+                name="q"
+                value={query || ''}
+                onChange={handleOnSearch}
+                autoComplete="off"
+                placeholder="Buscar"
+                required
+              />
+              <div className={styles.navSearchResults}>
+                {results.length > 0 && (
+                  <ul>
+                    {results.map(({ slug, title }, index) => {
+                      return (
+                        <li key={slug}>
+                          <Link tabIndex={index} href={postPathBySlug(slug)}>
+                            {title}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+                {results.length === 0 && (
+                  <p>
+                    Nenhum resultado com <strong>{query}</strong>
+                  </p>
+                )}
+              </div>
+            </form>
+          )}
+        </div>
       </nav>
     </header>
   );
