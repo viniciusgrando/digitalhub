@@ -11,11 +11,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        default: 'rgba(22, 22, 22, 0.85)',
+        default: 'rgba(16, 16, 16, 0.85)',
       },
       colors: {
-        'dark-bg': '#161616',
-        'dark-text': '#ffffff',
+        'dark-bg': 'rgba(16, 16, 16, 1)',
+        'dark-text': 'rgba(255, 255, 255, 1)',
       },
     },
     darkMode: 'class',

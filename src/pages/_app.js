@@ -1,5 +1,7 @@
 import NextApp from 'next/app';
 
+import { Inter } from 'next/font/google';
+
 import { SiteContext, useSiteContext } from 'hooks/use-site';
 import { SearchProvider } from 'hooks/use-search';
 
@@ -9,9 +11,16 @@ import { getCategories } from 'lib/categories';
 import NextNProgress from 'nextjs-progressbar';
 import { getAllMenus } from 'lib/menus';
 
-import 'styles/globals.scss';
 import 'styles/global.css';
+import 'styles/globals.scss';
 import 'styles/wordpress.scss';
+
+export const inter = Inter({
+  weight: ['400', '700', '800'],
+  style: ['normal'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 function App({ Component, pageProps = {}, metadata, recentPosts, categories, menus }) {
   const site = useSiteContext({
@@ -22,12 +31,14 @@ function App({ Component, pageProps = {}, metadata, recentPosts, categories, men
   });
 
   return (
-    <SiteContext.Provider value={site}>
-      <SearchProvider>
-        <NextNProgress height={1} color={'var(--progress-bar-color)'} />
-        <Component {...pageProps} />
-      </SearchProvider>
-    </SiteContext.Provider>
+    <div className={inter.className}>
+      <SiteContext.Provider value={site}>
+        <SearchProvider>
+          <NextNProgress height={1} color={'var(--progress-bar-color)'} />
+          <Component {...pageProps} />
+        </SearchProvider>
+      </SiteContext.Provider>
+    </div>
   );
 }
 
