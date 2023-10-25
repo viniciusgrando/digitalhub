@@ -1,37 +1,20 @@
-import ClassName from 'models/classname';
-
+import Image from 'next/image';
 import styles from './Image.module.scss';
 
-const Image = ({
-  children,
-  className,
-  width = '100%',
-  height = 'auto',
-  src,
-  alt,
-  srcSet,
-  sizes,
-  dangerouslySetInnerHTML,
-}) => {
-  const imageClassName = new ClassName(styles.image);
+const MyImage = ({ children, src, alt = '', srcSet, dangerouslySetInnerHTML }) => (
+  <figure className={styles.image}>
+    <div className={styles.featuredImageImg}>
+      <Image width={1000} height={600} src={src} alt={alt} srcSet={srcSet} />
+    </div>
+    {children && <figcaption>{children}</figcaption>}
+    {dangerouslySetInnerHTML && (
+      <figcaption
+        dangerouslySetInnerHTML={{
+          __html: dangerouslySetInnerHTML,
+        }}
+      />
+    )}
+  </figure>
+);
 
-  imageClassName.addIf(className, className);
-
-  return (
-    <figure className={imageClassName.toString()}>
-      <div className={styles.featuredImageImg}>
-        <img width={width} height={height} src={src} alt={alt || ''} srcSet={srcSet} sizes={sizes} />
-      </div>
-      {children && <figcaption>{children}</figcaption>}
-      {dangerouslySetInnerHTML && (
-        <figcaption
-          dangerouslySetInnerHTML={{
-            __html: dangerouslySetInnerHTML,
-          }}
-        />
-      )}
-    </figure>
-  );
-};
-
-export default Image;
+export default MyImage;

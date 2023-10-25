@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { categoryPathBySlug } from 'lib/categories';
 import { authorPathByName } from 'lib/users';
@@ -25,7 +26,7 @@ const Metadata = ({ className, author, date, categories, options = DEFAULT_METAD
         <li className={styles.metadataAuthor}>
           <address>
             {author.avatar && (
-              <img
+              <Image
                 width={author.avatar.width}
                 height={author.avatar.height}
                 src={author.avatar.url}

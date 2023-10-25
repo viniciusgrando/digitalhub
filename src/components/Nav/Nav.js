@@ -173,7 +173,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <header className="flex fixed top-0 left-0 right-0 backdrop-blur-lg h-16 z-50 dark:bg-red">
+    <header className="flex fixed top-0 left-0 right-0 backdrop-blur-lg py-4 z-50 dark:bg-default">
       <nav className="flex container items-center justify-between mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-16">
         <Link
           className="text-4xl font-bold bg-gradient-to-r from-stone-100 via-stone-300 to-stone-400 text-transparent bg-clip-text"
