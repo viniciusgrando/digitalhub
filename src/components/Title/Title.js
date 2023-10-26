@@ -1,15 +1,10 @@
-import ClassName from 'models/classname';
-
+import Image from 'next/image';
 import styles from './Title.module.scss';
 
-const Title = ({ className, title, thumbnail }) => {
-  const titleClassName = new ClassName(styles.title);
-
-  titleClassName.addIf(className, className);
-
+const Title = ({ title, thumbnail }) => {
   return (
-    <div className={titleClassName.toString()}>
-      {thumbnail && <img src={thumbnail.url} alt="" aria-hidden="true" />}
+    <div className={styles.title}>
+      {thumbnail && <Image src={thumbnail.url} alt="" width={100} height={100} />}
       <span>{title}</span>
     </div>
   );
