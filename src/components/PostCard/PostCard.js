@@ -25,18 +25,12 @@ const PostCard = ({ post, options = {} }) => {
     metadata.categories = categories;
   }
 
-  let postCardStyle = styles.postCard;
-
-  if (isSticky) {
-    postCardStyle = `${postCardStyle} ${styles.postCardSticky}`;
-  }
-
   return (
-    <div className={postCardStyle}>
+    <div className="border-[1px] border-zinc-900 px-12 pb-6 rounded-3xl shadow-md">
       {isSticky && <FaMapPin aria-label="Sticky Post" />}
       <Link href={postPathBySlug(slug)}>
         <h3
-          className="text-4xl mb-4"
+          className="text-4xl mb-4 text-slate-200 font-medium"
           dangerouslySetInnerHTML={{
             __html: title,
           }}

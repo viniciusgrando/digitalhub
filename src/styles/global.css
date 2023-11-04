@@ -37,3 +37,8 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+figure img{
+    background:transparent !important;
+    border: 0 !important;
+}
