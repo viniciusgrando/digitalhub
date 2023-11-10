@@ -176,7 +176,7 @@ const Nav = () => {
     <header className="flex fixed top-0 left-0 right-0 backdrop-blur-lg py-4 z-50 border-b-[1px] border-b-default dark:border-b-dark dark:bg-default">
       <nav className="flex container items-center justify-between mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-16">
         <Link
-          className="text-4xl font-bold bg-gradient-to-r from-stone-100 via-stone-300 to-stone-400 text-transparent bg-clip-text"
+          className="text-4xl font-bold bg-gradient-to-r from-stone-300 via-stone-400 to-stone-400 dark:bg-gradient-to-r dark:from-stone-100 dark:via-stone-300 dark:to-stone-400 text-transparent bg-clip-text"
           href="/"
         >
           {title}

@@ -18,7 +18,7 @@ const Footer = () => {
   const hasMenu = hasRecentPosts || hasRecentCategories;
 
   return (
-    <footer className={styles.footer}>
+    <footer className="border-t-[1px] border-neutral-200 dark:border-b-dark">
       {hasMenu && (
         <Section className={styles.footerMenu}>
           <Container>
@@ -75,10 +75,10 @@ const Footer = () => {
         </Section>
       )}
 
-      <Section className={styles.footerLegal}>
+      <Section className="text-center h-2">
         <Container>
           <p>
-            &copy; {new Date().getFullYear()} {title}
+            &copy; {new Date().getFullYear()} {title} • G2Digital
           </p>
         </Container>
       </Section>
